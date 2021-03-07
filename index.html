@@ -197,42 +197,46 @@ provides additional functionality such as:</p>
 </ul>
 <p>These features make IntXeger more suitable than xeger for applications such as generating
 unique identifiers, enumerating all strings which match the regex, and more!</p>
-<div class="section" id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">intxeger</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generate 10 unique UUIDs</span>
-<span class="n">x</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>   <span class="c1"># get the number of unique strings</span>
-<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1001</span><span class="p">)</span>  <span class="c1"># get the 1001th unique string</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p><strong>Stable Release:</strong> <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">intxeger</span></code><span class="raw-html-m2r"><br></span>
-<strong>Development Head:</strong> <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/k15z/intxeger.git</span></code></p>
-</div>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p>For full package documentation please visit <a class="reference external" href="https://k15z.github.io/intxeger">k15z.github.io/intxeger</a>.</p>
-</div>
-<div class="section" id="development">
-<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference external" href="CONTRIBUTING.md">CONTRIBUTING.md</a> for information related to developing the code.</p>
-<div class="section" id="make-commands">
-<h3>Make Commands<a class="headerlink" href="#make-commands" title="Permalink to this headline">¶</a></h3>
-<p>Here are the commands you will need to know for everyday development:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make install   <span class="c1"># install the package in development mode</span>
-make <span class="nb">test</span>      <span class="c1"># run type checks and tests</span>
-make view-docs <span class="c1"># generate and view docs</span>
-make fix-lint  <span class="c1"># automatically format and fix lint issues</span>
+<p>You can install the latest stable release of IntXeger by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install intxeger
 </pre></div>
 </div>
+</div>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with a simple example where our regex specifies a two-character strnig
+that only contains lowercase letters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">intxeger</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[a-z]</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can check the number of strings that can be generated with this string using
+the <code class="docutils literal notranslate"><span class="pre">length()</span></code> method and generate the <code class="docutils literal notranslate"><span class="pre">i</span></code>th string which matches using the <code class="docutils literal notranslate"><span class="pre">get(i)</span></code>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">26</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># there are 676 unique strings which match this regex</span>
+<span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ap&#39;</span> <span class="c1"># the 15th unique string is &#39;ap&#39;</span>
+</pre></div>
+</div>
+<p>Furthermore, you can generate <code class="docutils literal notranslate"><span class="pre">N</span></code> unique strings which match this regex using the
+<code class="docutils literal notranslate"><span class="pre">sample(N)</span></code> method. Note that <code class="docutils literal notranslate"><span class="pre">N</span></code> must be less than or equal to the length.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># [&#39;xt&#39;, &#39;rd&#39;, &#39;jm&#39;, &#39;pj&#39;, &#39;jy&#39;, &#39;sp&#39;, &#39;cm&#39;, &#39;ag&#39;, &#39;cb&#39;, &#39;yt&#39;]</span>
+</pre></div>
+</div>
+<p>Here’s a more complicated regex which specifies a 16-digit hexadecimal string,
+delimited between every group of 4 digits by a dash.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># [&#39;F64C-F593-5E4A-E634&#39;]</span>
+</pre></div>
+</div>
+<p>To learn more about the functionality provided by <code class="docutils literal notranslate"><span class="pre">IntXeger</span></code>, check out our
+<a class="reference external" href="https://k15z.github.io/IntXeger">documentation</a>!</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 </div>
