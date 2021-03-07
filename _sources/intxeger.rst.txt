@@ -1,0 +1,26 @@
+intxeger package
+================
+
+.. automodule:: intxeger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   intxeger.core
+
+Submodules
+----------
+
+intxeger.intxeger module
+------------------------
+
+.. automodule:: intxeger.intxeger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>intxeger.core package &mdash; IntXeger 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="intxeger package" href="intxeger.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> IntXeger
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#stable-release">Stable release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-sources">From sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="intxeger.html">intxeger package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="intxeger.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">intxeger.core package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intxeger.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#deploying">Deploying</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">IntXeger</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">intxeger</a> &raquo;</li>
+        
+          <li><a href="intxeger.html">intxeger package</a> &raquo;</li>
+        
+      <li>intxeger.core package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/intxeger.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="intxeger.html" class="btn btn-neutral float-left" title="intxeger package" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-intxeger.core">
+<span id="intxeger-core-package"></span><h1>intxeger.core package<a class="headerlink" href="#module-intxeger.core" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="intxeger.core.Node">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.</code><code class="sig-name descname">Node</code><a class="reference internal" href="_modules/intxeger/core/base.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sized</span></code></p>
+<dl class="method">
+<dt id="intxeger.core.Node.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/base.html#Node.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Node.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Node.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/base.html#Node.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Node.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Node.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param">N: int</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/intxeger/core/base.html#Node.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Node.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="intxeger.core.Choice">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.</code><code class="sig-name descname">Choice</code><span class="sig-paren">(</span><em class="sig-param">choices: Sequence[intxeger.core.base.Node]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.Choice.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Choice.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Choice.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Choice.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="intxeger.core.Concatenate">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.</code><code class="sig-name descname">Concatenate</code><span class="sig-paren">(</span><em class="sig-param">nodes: Sequence[intxeger.core.base.Node]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.Concatenate.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Concatenate.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Concatenate.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Concatenate.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="intxeger.core.Constant">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.</code><code class="sig-name descname">Constant</code><span class="sig-paren">(</span><em class="sig-param">value: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/constant.html#Constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.Constant.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/constant.html#Constant.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Constant.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Constant.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/constant.html#Constant.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Constant.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="intxeger.core.Repeat">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.</code><code class="sig-name descname">Repeat</code><span class="sig-paren">(</span><em class="sig-param">node: intxeger.core.base.Node</em>, <em class="sig-param">min_count: int = 0</em>, <em class="sig-param">max_count: int = 16</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Repeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.Repeat.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Repeat.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.Repeat.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.Repeat.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-intxeger.core.base">
+<span id="intxeger-core-base-module"></span><h2>intxeger.core.base module<a class="headerlink" href="#module-intxeger.core.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="intxeger.core.base.Node">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.base.</code><code class="sig-name descname">Node</code><a class="reference internal" href="_modules/intxeger/core/base.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.base.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sized</span></code></p>
+<dl class="method">
+<dt id="intxeger.core.base.Node.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/base.html#Node.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.base.Node.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.base.Node.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/base.html#Node.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.base.Node.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.base.Node.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param">N: int</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/intxeger/core/base.html#Node.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.base.Node.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-intxeger.core.choice">
+<span id="intxeger-core-choice-module"></span><h2>intxeger.core.choice module<a class="headerlink" href="#module-intxeger.core.choice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="intxeger.core.choice.Choice">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.choice.</code><code class="sig-name descname">Choice</code><span class="sig-paren">(</span><em class="sig-param">choices: Sequence[intxeger.core.base.Node]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.choice.Choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.choice.Choice.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.choice.Choice.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.choice.Choice.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/choice.html#Choice.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.choice.Choice.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-intxeger.core.concatenate">
+<span id="intxeger-core-concatenate-module"></span><h2>intxeger.core.concatenate module<a class="headerlink" href="#module-intxeger.core.concatenate" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="intxeger.core.concatenate.Concatenate">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.concatenate.</code><code class="sig-name descname">Concatenate</code><span class="sig-paren">(</span><em class="sig-param">nodes: Sequence[intxeger.core.base.Node]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.concatenate.Concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.concatenate.Concatenate.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.concatenate.Concatenate.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.concatenate.Concatenate.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/concatenate.html#Concatenate.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.concatenate.Concatenate.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-intxeger.core.constant">
+<span id="intxeger-core-constant-module"></span><h2>intxeger.core.constant module<a class="headerlink" href="#module-intxeger.core.constant" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="intxeger.core.constant.Constant">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.constant.</code><code class="sig-name descname">Constant</code><span class="sig-paren">(</span><em class="sig-param">value: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/constant.html#Constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.constant.Constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.constant.Constant.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/constant.html#Constant.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.constant.Constant.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.constant.Constant.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/constant.html#Constant.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.constant.Constant.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-intxeger.core.repeat">
+<span id="intxeger-core-repeat-module"></span><h2>intxeger.core.repeat module<a class="headerlink" href="#module-intxeger.core.repeat" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="intxeger.core.repeat.Repeat">
+<em class="property">class </em><code class="sig-prename descclassname">intxeger.core.repeat.</code><code class="sig-name descname">Repeat</code><span class="sig-paren">(</span><em class="sig-param">node: intxeger.core.base.Node</em>, <em class="sig-param">min_count: int = 0</em>, <em class="sig-param">max_count: int = 16</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.repeat.Repeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#intxeger.core.base.Node" title="intxeger.core.base.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">intxeger.core.base.Node</span></code></a></p>
+<dl class="method">
+<dt id="intxeger.core.repeat.Repeat.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">idx: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.repeat.Repeat.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="intxeger.core.repeat.Repeat.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/intxeger/core/repeat.html#Repeat.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#intxeger.core.repeat.Repeat.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kevin Alex Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+intxeger.core package
+=====================
+
+.. automodule:: intxeger.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+intxeger.core.base module
+-------------------------
+
+.. automodule:: intxeger.core.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+intxeger.core.choice module
+---------------------------
+
+.. automodule:: intxeger.core.choice
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+intxeger.core.concatenate module
+--------------------------------
+
+.. automodule:: intxeger.core.concatenate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+intxeger.core.constant module
+-----------------------------
+
+.. automodule:: intxeger.core.constant
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+intxeger.core.repeat module
+---------------------------
+
+.. automodule:: intxeger.core.repeat
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
