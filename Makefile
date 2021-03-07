@@ -56,6 +56,10 @@ test:  ## run type check and tests
 	mypy intxeger
 	pytest
 
+lint:  ## run lint
+	flake8 intxeger --count --verbose --show-source --statistics
+	black --check intxeger
+
 test-all:  ## run tests using tox
 	tox
 

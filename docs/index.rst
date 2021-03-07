@@ -7,7 +7,6 @@
 
    Overview <self>
    installation
-   example
 
 .. toctree::
    :hidden:
