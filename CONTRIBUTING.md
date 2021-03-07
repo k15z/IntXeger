@@ -54,9 +54,9 @@ Make sure all your changes are committed.
 Then run:
 
 ```bash
-$ bumpversion patch # possible: major / minor / patch
-$ git push
-$ git push --tags
+bumpversion patch # possible: major / minor / patch
+git push
+git push --tags
 git branch -D stable
 git checkout -b stable
 git push --set-upstream origin stable -f
