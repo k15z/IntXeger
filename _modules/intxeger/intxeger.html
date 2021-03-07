@@ -33,7 +33,6 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -96,7 +95,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../installation.html#from-sources">From sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../example.html">Example</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
@@ -217,6 +215,11 @@
         <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">Constant</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CATEGORY_MAP</span><span class="p">[</span><span class="n">args</span><span class="p">]])</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">ANY</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">Constant</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">SUBPATTERN</span><span class="p">:</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_to_node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">MAX_REPEAT</span><span class="p">:</span>
         <span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
         <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -230,7 +233,7 @@
 <div class="viewcode-block" id="build"><a class="viewcode-back" href="../../intxeger.html#intxeger.build">[docs]</a><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">regex</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
         <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_to_node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span></div>
 </pre></div>

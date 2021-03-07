@@ -33,7 +33,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -97,7 +96,6 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html#from-sources">From sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
@@ -180,13 +178,6 @@
   </ul>
 
   
-  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
-      
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-      
-      
-  </div>
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -194,25 +185,26 @@
             
   <div class="section" id="intxeger">
 <h1>IntXeger<a class="headerlink" href="#intxeger" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://github.com/k15z/intxeger/actions"><img alt="Build Status" src="https://github.com/k15z/intxeger/workflows/Build%20Main/badge.svg" /></a>
-<a class="reference external image-reference" href="https://k15z.github.io/intxeger"><img alt="Documentation" src="https://github.com/k15z/intxeger/workflows/Documentation/badge.svg" /></a>
-<a class="reference external image-reference" href="https://codecov.io/gh/k15z/intxeger"><img alt="Code Coverage" src="https://codecov.io/gh/k15z/intxeger/branch/main/graph/badge.svg" /></a>
-<p>Generate unique strings from regular expressions.</p>
-<hr class="docutils" />
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://github.com/k15z/IntXeger/actions"><img alt="Build Status" src="https://github.com/k15z/intxeger/workflows/Build%20Main/badge.svg" /></a>
+<a class="reference external image-reference" href="https://k15z.github.io/IntXeger"><img alt="Documentation" src="https://github.com/k15z/intxeger/workflows/Documentation/badge.svg" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/k15z/IntXeger"><img alt="Code Coverage" src="https://codecov.io/gh/k15z/intxeger/branch/main/graph/badge.svg" /></a>
+<p>IntXeger (pronounced “integer”) is a Python library for generating strings from regular
+expressions. It was inspired by the <a class="reference external" href="https://github.com/crdoconnor/xeger">xeger</a> library but
+provides additional functionality such as:</p>
 <ul class="simple">
-<li><p>… coming soon …</p></li>
+<li><p>Array-like indexing for mapping integers to strings which match the regex.</p></li>
+<li><p>Sampling-without-replacement for generating a set of unique strings which match the regex.</p></li>
 </ul>
-</div>
+<p>These features make IntXeger more suitable than xeger for applications such as generating
+unique identifiers, enumerating all strings which match the regex, and more!</p>
 <div class="section" id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">intxeger</span>
 
-<span class="n">xeger</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">xeger</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generate 10 unique UUIDs</span>
-<span class="n">xeger</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>   <span class="c1"># get the number of unique strings</span>
-<span class="n">xeger</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1001</span><span class="p">)</span>  <span class="c1"># get the 1001th unique string</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">-[a-z]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generate 10 unique UUIDs</span>
+<span class="n">x</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>   <span class="c1"># get the number of unique strings</span>
+<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1001</span><span class="p">)</span>  <span class="c1"># get the 1001th unique string</span>
 </pre></div>
 </div>
 </div>
@@ -258,6 +250,9 @@ make fix-lint  <span class="c1"># automatically format and fix lint issues</span
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
