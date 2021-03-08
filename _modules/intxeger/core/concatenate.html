@@ -106,6 +106,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +200,14 @@
             <span class="n">sub_idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">%</span> <span class="n">choice</span><span class="o">.</span><span class="n">length</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">//</span> <span class="n">choice</span><span class="o">.</span><span class="n">length</span>
             <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sub_idx</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">values</span><span class="p">))</span></div></div>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">values</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="s2">&quot;Concatenate(</span><span class="se">\n</span><span class="s2">  &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  &quot;</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">)&quot;</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>

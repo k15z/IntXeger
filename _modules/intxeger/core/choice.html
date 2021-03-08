@@ -106,6 +106,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
 </ul>
@@ -190,15 +191,25 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Node</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="n">choices</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">length</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_all_one</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Choice.get"><a class="viewcode-back" href="../../../intxeger.core.html#intxeger.core.Choice.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="n">idx</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_all_one</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">choice</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="n">idx</span><span class="p">:</span>
                 <span class="n">idx</span> <span class="o">-=</span> <span class="n">choice</span><span class="o">.</span><span class="n">length</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">choice</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span></div></div>
+                <span class="k">return</span> <span class="n">choice</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="s2">&quot;Choice(</span><span class="se">\n</span><span class="s2">  &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  &quot;</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">)&quot;</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>

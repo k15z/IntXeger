@@ -24,3 +24,11 @@ intxeger.intxeger module
    :undoc-members:
    :show-inheritance:
 
+intxeger.optimize module
+------------------------
+
+.. automodule:: intxeger.optimize
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
