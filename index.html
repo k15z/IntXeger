@@ -229,11 +229,10 @@ method.</p>
 <span class="c1"># [&#39;xt&#39;, &#39;rd&#39;, &#39;jm&#39;, &#39;pj&#39;, &#39;jy&#39;, &#39;sp&#39;, &#39;cm&#39;, &#39;ag&#39;, &#39;cb&#39;, &#39;yt&#39;]</span>
 </pre></div>
 </div>
-<p>Here’s a more complicated regex which specifies a 16-digit hexadecimal string,
-delimited between every group of 4 digits by a dash.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">-[0-9A-F]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="c1"># [&#39;F64C-F593-5E4A-E634&#39;]</span>
+<p>Here’s a more complicated regex which specifies a timestamp.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;r(1[0-2]|0[1-9])(:[0-5]\d)</span><span class="si">{2}</span><span class="s2"> (A|P)M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># [&#39;11:57:12 AM&#39;, &#39;01:16:01 AM&#39;]</span>
 </pre></div>
 </div>
 <p>To learn more about the functionality provided by <code class="docutils literal notranslate"><span class="pre">IntXeger</span></code>, check out our
