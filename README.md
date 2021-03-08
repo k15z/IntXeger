@@ -51,13 +51,12 @@ print(x.sample(N=10))
 # ['xt', 'rd', 'jm', 'pj', 'jy', 'sp', 'cm', 'ag', 'cb', 'yt']
 ```
 
-Here's a more complicated regex which specifies a 16-digit hexadecimal string, 
-delimited between every group of 4 digits by a dash.
+Here's a more complicated regex which specifies a timestamp.
 
 ```python
-x = intxeger.build("[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}")
-print(x.sample(N=1))
-# ['F64C-F593-5E4A-E634']
+x = intxeger.build("r(1[0-2]|0[1-9])(:[0-5]\d){2} (A|P)M")
+print(x.sample(N=2))
+# ['11:57:12 AM', '01:16:01 AM']
 ```
 
 To learn more about the functionality provided by `IntXeger`, check out our 

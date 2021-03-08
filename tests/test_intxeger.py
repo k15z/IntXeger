@@ -51,6 +51,9 @@ class TestIntXeger(unittest.TestCase):
             (r"[a-z]{4}-[a-z]{4}-[a-z]{4}-[a-z]{4}", 100),
             (r"[^a]", 10),  # anything except a
             (r"[abc]+?", 10),
+            (r"((abc)|(123))", 2),
+            (r"((hello){2}|world!)", 2),
+            (r"(1[0-2]|0[1-9])(:[0-5]\d){2} (A|P)M", 10),
         ]
     )
     def test_match(self, regex, nb_samples):

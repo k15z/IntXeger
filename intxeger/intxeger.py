@@ -33,6 +33,14 @@ def _to_node(op, args, max_repeat):
         return Choice([Constant(c) for c in CATEGORY_MAP[args]])
     elif op == sre_parse.ANY:
         return Choice([Constant(c) for c in string.printable])
+    elif op == sre_parse.BRANCH:
+        nodes = []
+        for group in args[1]:
+            subnodes = []
+            for op, args in group:
+                subnodes.append(_to_node(op, args, max_repeat))
+            nodes.append(Concatenate(subnodes))
+        return Choice(nodes)
     elif op == sre_parse.SUBPATTERN:
         nodes = []
         for op, args in args[3]:

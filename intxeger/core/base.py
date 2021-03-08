@@ -16,7 +16,7 @@ class Node(Sized):
     def get(self, idx: int) -> str:
         raise NotImplementedError()
 
-    def sample(self, N: int) -> List[str]:
+    def sample(self, N: int = 1) -> List[str]:
         if N > self.length:
             raise ValueError()
         pool: Dict[int, int] = {}
