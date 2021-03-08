@@ -54,3 +54,7 @@ class TestIntXeger(unittest.TestCase):
         matcher = re.compile(regex)
         for result in x.sample(nb_samples):
             assert matcher.match(result)
+
+        x = intxeger.optimize(x)
+        for result in x.sample(nb_samples):
+            assert matcher.match(result)

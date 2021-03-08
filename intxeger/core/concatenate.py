@@ -17,3 +17,10 @@ class Concatenate(Node):
             idx = idx // choice.length
             values.append(choice.get(sub_idx))
         return "".join(reversed(values))
+
+    def __str__(self):
+        return (
+            "Concatenate(\n  "
+            + "\n".join(str(c) for c in self.nodes).replace("\n", "\n  ")
+            + "\n)"
+        )
