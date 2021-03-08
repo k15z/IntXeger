@@ -1,8 +1,10 @@
 # IntXeger
 
-[![Build Status](https://github.com/k15z/intxeger/workflows/Build%20Main/badge.svg)](https://github.com/k15z/IntXeger/actions)
-[![Documentation](https://github.com/k15z/intxeger/workflows/Documentation/badge.svg)](https://k15z.github.io/IntXeger)
-[![Code Coverage](https://codecov.io/gh/k15z/intxeger/branch/main/graph/badge.svg)](https://codecov.io/gh/k15z/IntXeger)
+[![Build Status](https://img.shields.io/github/workflow/status/k15z/IntXeger/Build%20Main?style=flat-square)](https://github.com/k15z/IntXeger/actions)
+[![Documentation](https://img.shields.io/github/workflow/status/k15z/IntXeger/Documentation?label=docs&style=flat-square)](https://k15z.github.io/IntXeger)
+[![Code Coverage](https://img.shields.io/codecov/c/github/k15z/IntXeger?style=flat-square)](https://codecov.io/gh/k15z/IntXeger)
+[![PyPI](https://img.shields.io/pypi/pyversions/intxeger?style=flat-square)](https://pypi.org/project/intxeger/)
+![MIT](https://img.shields.io/github/license/k15z/IntXeger?style=flat-square)
 
 IntXeger (pronounced "integer") is a Python library for generating strings from regular
 expressions. It was inspired by the [xeger](https://github.com/crdoconnor/xeger) library but 
