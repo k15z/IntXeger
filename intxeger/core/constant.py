@@ -10,3 +10,6 @@ class Constant(Node):
         if self.length <= idx:
             raise IndexError()
         return self.value
+
+    def __str__(self):
+        return f"Constant({self.value})"

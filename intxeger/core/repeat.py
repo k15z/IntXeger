@@ -13,3 +13,6 @@ class Repeat(Node):
 
     def get(self, idx: int) -> str:
         return self.node.get(idx)
+
+    def __str__(self):
+        return "Repeat(" + str(self.node).replace("\n", "\n  ") + ")"

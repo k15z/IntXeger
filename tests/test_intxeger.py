@@ -50,7 +50,12 @@ class TestIntXeger(unittest.TestCase):
         ]
     )
     def test_match(self, regex, nb_samples):
-        x = intxeger.build(regex)
+        x = intxeger.build(regex, use_optimization=False)
+        matcher = re.compile(regex)
+        for result in x.sample(nb_samples):
+            assert matcher.match(result)
+
+        x = intxeger.build(regex, use_optimization=True)
         matcher = re.compile(regex)
         for result in x.sample(nb_samples):
             assert matcher.match(result)

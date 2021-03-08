@@ -4,6 +4,7 @@ import sre_parse
 import string
 
 from intxeger.core import Choice, Concatenate, Constant, Node, Repeat
+from intxeger.optimize import optimize
 
 CATEGORY_MAP = {
     sre_parse.CATEGORY_SPACE: " \t\n\r\x0b\x0c",
@@ -49,9 +50,12 @@ def _to_node(op, args):
         raise ValueError(f"{op} {args}")
 
 
-def build(regex: str) -> Node:
+def build(regex: str, use_optimization: bool = True) -> Node:
     nodes = []
     tokens = sre_parse.parse(regex)
     for op, args in tokens:
         nodes.append(_to_node(op, args))
-    return Concatenate(nodes)
+    node = Concatenate(nodes)
+    if use_optimization:
+        return optimize(node)
+    return node
