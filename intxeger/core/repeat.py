@@ -9,9 +9,7 @@ class Repeat(Node):
         for count in range(min_count, max_count + 1):
             choices.append(Concatenate([node] * count))
         self.node = Choice(choices)
-
-    def length(self) -> int:
-        return len(self.node)
+        self.length = self.node.length
 
     def get(self, idx: int) -> str:
         return self.node.get(idx)

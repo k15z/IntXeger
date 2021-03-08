@@ -6,15 +6,13 @@ from intxeger.core import Node
 class Choice(Node):
     def __init__(self, choices: Sequence[Node]):
         self.choices = choices
-
-    def length(self):
-        return sum(len(choice) for choice in self.choices)
+        self.length = sum(choice.length for choice in self.choices)
 
     def get(self, idx: int):
-        if len(self) <= idx:
+        if self.length <= idx:
             raise IndexError()
         for choice in self.choices:
-            if len(choice) <= idx:
-                idx -= len(choice)
+            if choice.length <= idx:
+                idx -= choice.length
             else:
                 return choice.get(idx)

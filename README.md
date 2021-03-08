@@ -38,7 +38,7 @@ the `length()` method and generate the `i`th string which matches using the `get
 method.
 
 ```python
-assert x.length() == 26**2 # there are 676 unique strings which match this regex
+assert x.length == 26**2 # there are 676 unique strings which match this regex
 assert x.get(15) == 'ap' # the 15th unique string is 'ap'
 ```
 
