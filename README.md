@@ -35,7 +35,7 @@ x = intxeger.build("[a-z]{2}")
 ```
 
 You can check the number of strings that can be generated with this string using 
-the `length()` method and generate the `i`th string which matches using the `get(i)`
+the `length` attribute and generate the `i`th string which matches using the `get(i)`
 method.
 
 ```python
