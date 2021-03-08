@@ -37,12 +37,14 @@ def _to_node(op, args):
         for op, args in args[3]:
             nodes.append(_to_node(op, args))
         return Concatenate(nodes)
-    elif op == sre_parse.MAX_REPEAT:
+    elif op == sre_parse.MAX_REPEAT or op == sre_parse.MIN_REPEAT:
         min_, max_, args = args
         op, args = args[0]
         if max_ == sre_parse.MAXREPEAT:
             return Repeat(_to_node(op, args), min_)
         return Repeat(_to_node(op, args), min_, max_)
+    elif op == sre_parse.NOT_LITERAL:
+        return Choice([Constant(c) for c in string.printable if c != chr(args)])
     else:
         raise ValueError(f"{op} {args}")
 

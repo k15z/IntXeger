@@ -14,7 +14,7 @@ provides additional functionality such as:
 * Array-like indexing for mapping integers to strings which match the regex.
 * Sampling-without-replacement for generating a set of unique strings which match the regex.
 
-These features make IntXeger perfect for applications such as generating unique 
+These features make `IntXeger` perfect for applications such as generating unique 
 identifiers, producing matching strings sequentially, and more!
 
 ## Installation
@@ -26,7 +26,7 @@ pip install intxeger
 
 ## Quick Start
 
-Let's start with a simple example where our regex specifies a two-character strnig
+Let's start with a simple example where our regex specifies a two-character string
 that only contains lowercase letters.
 
 ```python

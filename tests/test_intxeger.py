@@ -1,6 +1,8 @@
 import re
 import unittest
 
+from parameterized import parameterized
+
 import intxeger
 
 
@@ -34,24 +36,21 @@ class TestIntXeger(unittest.TestCase):
         self.assertEqual(x[3], "c")
         self.assertEqual(x[4], "aa")
 
-    def test_build_6(self):
-        x = intxeger.build("[a-z]{4}")
-        x.sample(10)
-
-    def test_build_7(self):
-        x = intxeger.build("[a-z]{4}-[a-z]{4}-[a-z]{4}-[a-z]{4}")
-        x.sample(10)
-
-    def test_build_8(self):
-        x = intxeger.build(r"\w{4}")
-        x.sample(10)
-
-    def test_build_9(self):
-        x = intxeger.build(r"/json/([0-9]+)")
-        x.sample(10)
-
-    def test_build_10(self):
-        regex = r"/json/([0-9]{4})/([a-z]{4})"
+    @parameterized.expand(
+        [
+            (r"[a-z]+", 100),
+            (r"[a-z]{4}", 1000),
+            (r"[a-z]{4,6}", 1000),
+            (r"\w\d", 10),
+            (r"/json/([0-9]+)", 100),
+            (r"/json/([0-9]{4})/([a-z]{4})", 100),
+            (r"[a-z]{4}-[a-z]{4}-[a-z]{4}-[a-z]{4}", 100),
+            (r"[^a]", 10),  # anything except a
+            (r"[abc]+?", 10),
+        ]
+    )
+    def test_match(self, regex, nb_samples):
         x = intxeger.build(regex)
-        data = x.sample(10)[0]
-        assert re.compile(regex).match(data), data
+        matcher = re.compile(regex)
+        for result in x.sample(nb_samples):
+            assert matcher.match(result)
