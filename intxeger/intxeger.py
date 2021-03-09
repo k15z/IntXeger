@@ -3,7 +3,7 @@
 import sre_parse
 import string
 
-from intxeger.core import Choice, Concatenate, Constant, Node, Repeat, Group, GroupRef
+from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, Repeat
 from intxeger.optimize import optimize
 
 CATEGORY_MAP = {

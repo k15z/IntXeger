@@ -1,4 +1,4 @@
-from intxeger.core import Choice, Concatenate, Constant, Node, Repeat, Group, GroupRef
+from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, Repeat
 
 
 def optimize(node: Node, level=10):

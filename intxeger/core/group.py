@@ -1,9 +1,7 @@
 from intxeger.core import Node
-from intxeger.core.choice import Choice
-from intxeger.core.concatenate import Concatenate
-
 
 GROUP_TO_VALUE = {}
+
 
 class Group(Node):
     def __init__(self, node: Node, ref_id: int):
@@ -18,8 +16,8 @@ class Group(Node):
     def __str__(self):
         return "Group(" + str(self.node).replace("\n", "\n  ") + f", {self.ref_id})"
 
-class GroupRef(Node):
 
+class GroupRef(Node):
     def __init__(self, ref_id: int):
         self.ref_id = ref_id
         self.length = 1
