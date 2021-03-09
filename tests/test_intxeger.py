@@ -54,6 +54,12 @@ class TestIntXeger(unittest.TestCase):
             (r"((abc)|(123))", 2),
             (r"((hello){2}|world!)", 2),
             (r"(1[0-2]|0[1-9])(:[0-5]\d){2} (A|P)M", 10),
+            (r"hello(?=world)", 1),
+            (r"[^abc]", 10),
+            (r"[^\d]", 10),
+            (r"(echo|kali)-\1", 2),
+            (r"(echo|kali)-(hello|world)-\1-\2-\1", 2),
+            (r"(echo|kali)-(a+|(b|c))-\1-\2-\1", 2),
         ]
     )
     def test_match(self, regex, nb_samples):
