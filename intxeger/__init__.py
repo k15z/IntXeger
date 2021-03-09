@@ -1,4 +1,6 @@
-"""Top-level package for IntXeger."""
+"""
+IntXeger is a Python library for generating strings from regular expressions.
+"""
 
 __author__ = "Kevin Alex Zhang"
 __email__ = "kevz@mit.edu"

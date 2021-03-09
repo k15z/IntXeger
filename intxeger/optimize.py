@@ -2,6 +2,19 @@ from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, 
 
 
 def optimize(node: Node, level=10):
+    """Traverse the tree return an optimized copy.
+
+    This traverses the tree and applies transforms which are designed to
+    improve the sampling speed. Examples of transforms include removing
+    unnecessary operations, flattening small nodes, and more.
+
+    Args:
+        node: The root node.
+        level: The optimization level (higher = more optimization loops).
+
+    Returns:
+        The root node of the optimized tree.
+    """
     original_node = node
     for _ in range(level):
         new_node = _optimize(node)
