@@ -182,7 +182,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for intxeger.optimize</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
+<span></span><span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">GroupRef</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
 
 
 <div class="viewcode-block" id="optimize"><a class="viewcode-back" href="../../intxeger.html#intxeger.optimize.optimize">[docs]</a><span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
@@ -198,6 +198,9 @@
 
 
 <span class="k">def</span> <span class="nf">_optimize</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Group</span><span class="p">):</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">_optimize</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">node</span><span class="p">),</span> <span class="n">node</span><span class="o">.</span><span class="n">ref_id</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Choice</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="n">_optimize</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -220,7 +223,8 @@
             <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Choice</span><span class="p">)</span>
             <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">Constant</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_flat</span><span class="p">:</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Group</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">GroupRef</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_flat</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">skip</span><span class="p">:</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="n">Constant</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">length</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">node</span>
 </pre></div>

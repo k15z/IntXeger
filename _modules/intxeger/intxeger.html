@@ -187,7 +187,7 @@
 <span class="kn">import</span> <span class="nn">sre_parse</span>
 <span class="kn">import</span> <span class="nn">string</span>
 
-<span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
+<span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">GroupRef</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
 <span class="kn">from</span> <span class="nn">intxeger.optimize</span> <span class="kn">import</span> <span class="n">optimize</span>
 
 <span class="n">CATEGORY_MAP</span> <span class="o">=</span> <span class="p">{</span>
@@ -205,6 +205,9 @@
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
             <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_to_node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">max_repeat</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NEGATE&quot;</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">length</span><span class="p">)]</span>
+            <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Constant</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Choice</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">RANGE</span><span class="p">:</span>
         <span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span> <span class="o">=</span> <span class="n">args</span>
@@ -213,10 +216,17 @@
         <span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">LITERAL</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Constant</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">NEGATE</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;NEGATE&quot;</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">CATEGORY</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">Constant</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CATEGORY_MAP</span><span class="p">[</span><span class="n">args</span><span class="p">]])</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">ANY</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">Constant</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">ASSERT</span><span class="p">:</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_to_node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">max_repeat</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">BRANCH</span><span class="p">:</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
@@ -227,9 +237,12 @@
         <span class="k">return</span> <span class="n">Choice</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">SUBPATTERN</span><span class="p">:</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ref_id</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
             <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_to_node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">max_repeat</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Group</span><span class="p">(</span><span class="n">Concatenate</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span> <span class="n">ref_id</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">GROUPREF</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">GroupRef</span><span class="p">(</span><span class="n">ref_id</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">MAX_REPEAT</span> <span class="ow">or</span> <span class="n">op</span> <span class="o">==</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">MIN_REPEAT</span><span class="p">:</span>
         <span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
         <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

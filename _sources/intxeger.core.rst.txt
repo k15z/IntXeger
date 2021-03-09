@@ -41,6 +41,14 @@ intxeger.core.constant module
    :undoc-members:
    :show-inheritance:
 
+intxeger.core.group module
+--------------------------
+
+.. automodule:: intxeger.core.group
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 intxeger.core.repeat module
 ---------------------------
 
