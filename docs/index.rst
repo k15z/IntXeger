@@ -13,7 +13,7 @@
    :maxdepth: 1
    :caption: References
 
-   API Reference <modules>
+   API Reference <intxeger>
    contributing
 
 Indices and tables

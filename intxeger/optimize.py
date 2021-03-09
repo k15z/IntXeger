@@ -1,15 +1,37 @@
+from random import randint
+
 from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, Repeat
 
 
 def optimize(node: Node, level=10):
+    """Traverse the tree return an optimized copy.
+
+    This traverses the tree and applies transforms which are designed to
+    improve the sampling speed. Examples of transforms include removing
+    unnecessary operations, flattening small nodes, and more.
+
+    Args:
+        node: The root node.
+        level: The optimization level (higher = more optimization loops).
+
+    Returns:
+        The root node of the optimized tree.
+    """
     original_node = node
+
+    # Apply the optimizations
     for _ in range(level):
         new_node = _optimize(node)
         if str(node) == str(new_node):
             break
         node = new_node
+
+    # Test the optimized node
     assert node.length == original_node.length
-    assert node.get(0) == original_node.get(0)
+    for _ in range(10):
+        i = randint(0, node.length - 1)
+        assert node.get(i) == original_node.get(i)
+
     return node
 
 
@@ -17,7 +39,7 @@ def _optimize(node: Node):
     if isinstance(node, Group):
         node = Group(_optimize(node.node), node.ref_id)
 
-    if isinstance(node, Choice):
+    elif isinstance(node, Choice):
         node = Choice([_optimize(c) for c in node.choices])
         if len(node.choices) == 1:
             node = node.choices[0]
@@ -34,7 +56,7 @@ def _optimize(node: Node):
     elif isinstance(node, Repeat):
         node = node.node
 
-    if node.length < 1024:
+    if node.length < 10000:
         is_flat = isinstance(node, Constant) or (
             isinstance(node, Choice)
             and all(isinstance(c, Constant) for c in node.choices)

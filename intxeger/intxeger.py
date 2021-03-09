@@ -72,6 +72,20 @@ def _to_node(op, args, max_repeat):
 
 
 def build(regex: str, use_optimization: bool = True, max_repeat: int = 10) -> Node:
+    """Parse the regex and return the root node.
+
+    This parses the regex into an internal tree structure and returns the root
+    node; the root node can then be used to generate samples.
+
+    Args:
+        regex: The regular expression string.
+        use_optimization: Whether to apply the optimization routine.
+        max_repeat: The maximum number of repeats when using the zero-or-more
+            (``*``) or one-or-more (``+``) operators in the regex.
+
+    Returns:
+        The root node of the tree.
+    """
     nodes = []
     tokens = sre_parse.parse(regex)
     for op, args in tokens:

@@ -1,6 +1,6 @@
 import unittest
 
-from intxeger.core import Choice, Concatenate, Constant, Repeat
+from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Repeat
 
 
 class TestCore(unittest.TestCase):
@@ -49,3 +49,14 @@ class TestCore(unittest.TestCase):
         self.assertEqual(set(x.sample(6)), set(["a", "b", "aa", "ab", "ba", "bb"]))
         with self.assertRaises(ValueError):
             x.sample(10)
+
+    def test_group(self):
+        x = Concatenate(
+            [
+                Group(Constant("a"), 1),
+                Group(Constant("bc"), 2),
+                GroupRef(2),
+                GroupRef(1),
+            ]
+        )
+        self.assertEqual(x.sample(1)[0], "abcbca")

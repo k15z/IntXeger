@@ -4,18 +4,20 @@
 [![Documentation](https://img.shields.io/github/workflow/status/k15z/IntXeger/Documentation?label=docs&style=flat-square)](https://k15z.github.io/IntXeger)
 [![Code Coverage](https://img.shields.io/codecov/c/github/k15z/IntXeger?style=flat-square)](https://codecov.io/gh/k15z/IntXeger)
 [![PyPI](https://img.shields.io/pypi/pyversions/intxeger?style=flat-square)](https://pypi.org/project/intxeger/)
-![MIT](https://img.shields.io/github/license/k15z/IntXeger?style=flat-square)
+[![MIT](https://img.shields.io/github/license/k15z/IntXeger?style=flat-square)](https://github.com/k15z/IntXeger/blob/main/LICENSE)
 
 IntXeger (pronounced "integer") is a Python library for generating strings from regular
-expressions. It was inspired by the [xeger](https://github.com/crdoconnor/xeger) library but 
-provides additional features such as:
+expressions. Some of its core features include:
 
-* Faster than both [xeger](https://github.com/crdoconnor/xeger) and [exrex](https://github.com/asciimoo/exrex).
-* Array-like indexing for mapping integers to strings which match the regex.
-* Sampling-without-replacement for generating a set of unique strings which match the regex.
+* Support for most common regular expression operations.
+* Array-like indexing for mapping integers to matching strings.
+* Generator interface for sequentially sampling matching strings.
+* Sampling-without-replacement for generating a set of unique strings.
 
-These features make `IntXeger` perfect for applications such as generating unique 
-identifiers, producing matching strings sequentially, and more!
+Compared to popular alternatives such as [xeger](https://github.com/crdoconnor/xeger) and 
+[exrex](https://github.com/asciimoo/exrex), `IntXeger` is an order of magnitude faster at
+generating strings and offers unique functionality such as array-like indexing and 
+sampling-without-replacement.
 
 ## Installation
 You can install the latest stable release of IntXeger by running:
@@ -34,8 +36,8 @@ import intxeger
 x = intxeger.build("[a-z]{2}")
 ```
 
-You can check the number of strings that can be generated with this string using 
-the `length` attribute and generate the `i`th string which matches using the `get(i)`
+You can check the number of strings that can be generated from this regex using 
+the `length` attribute and generate the `i`th matching string using the `get(i)`
 method.
 
 ```python
