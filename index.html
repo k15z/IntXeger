@@ -217,7 +217,7 @@ that only contains lowercase letters.</p>
 </pre></div>
 </div>
 <p>You can check the number of strings that can be generated with this string using
-the <code class="docutils literal notranslate"><span class="pre">length()</span></code> method and generate the <code class="docutils literal notranslate"><span class="pre">i</span></code>th string which matches using the <code class="docutils literal notranslate"><span class="pre">get(i)</span></code>
+the <code class="docutils literal notranslate"><span class="pre">length</span></code> attribute and generate the <code class="docutils literal notranslate"><span class="pre">i</span></code>th string which matches using the <code class="docutils literal notranslate"><span class="pre">get(i)</span></code>
 method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">26</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># there are 676 unique strings which match this regex</span>
 <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ap&#39;</span> <span class="c1"># the 15th unique string is &#39;ap&#39;</span>
