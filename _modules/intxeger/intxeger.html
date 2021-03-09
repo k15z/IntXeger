@@ -98,17 +98,23 @@
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html">intxeger package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html">intxeger.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intxeger.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intxeger.core.html">intxeger.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.base">intxeger.core.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.choice">intxeger.core.choice module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.concatenate">intxeger.core.concatenate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.constant">intxeger.core.constant module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.group">intxeger.core.group module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.repeat">intxeger.core.repeat module</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
@@ -256,6 +262,20 @@
 
 
 <div class="viewcode-block" id="build"><a class="viewcode-back" href="../../intxeger.html#intxeger.build">[docs]</a><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">regex</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">use_optimization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">max_repeat</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse the regex and return the root node.</span>
+
+<span class="sd">    This parses the regex into an internal tree structure and returns the root</span>
+<span class="sd">    node; the root node can then be used to generate samples.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        regex: The regular expression string.</span>
+<span class="sd">        use_optimization: Whether to apply the optimization routine.</span>
+<span class="sd">        max_repeat: The maximum number of repeats when using the zero-or-more</span>
+<span class="sd">            (``*``) or one-or-more (``+``) operators in the regex.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The root node of the tree.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>

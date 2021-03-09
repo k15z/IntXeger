@@ -99,17 +99,23 @@
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intxeger.html">intxeger package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="intxeger.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html">intxeger.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intxeger.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intxeger.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intxeger.core.html">intxeger.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.base">intxeger.core.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.choice">intxeger.core.choice module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.concatenate">intxeger.core.concatenate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.constant">intxeger.core.constant module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.group">intxeger.core.group module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intxeger.core.html#module-intxeger.core.repeat">intxeger.core.repeat module</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="intxeger.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="intxeger.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -190,17 +196,19 @@
 <a class="reference external image-reference" href="https://k15z.github.io/IntXeger"><img alt="Documentation" src="https://img.shields.io/github/workflow/status/k15z/IntXeger/Documentation?label=docs&amp;style=flat-square" /></a>
 <a class="reference external image-reference" href="https://codecov.io/gh/k15z/IntXeger"><img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/k15z/IntXeger?style=flat-square" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/intxeger/"><img alt="PyPI" src="https://img.shields.io/pypi/pyversions/intxeger?style=flat-square" /></a>
-<a class="reference external image-reference" href="https://img.shields.io/github/license/k15z/IntXeger?style=flat-square"><img alt="MIT" src="https://img.shields.io/github/license/k15z/IntXeger?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://github.com/k15z/IntXeger/blob/main/LICENSE"><img alt="MIT" src="https://img.shields.io/github/license/k15z/IntXeger?style=flat-square" /></a>
 <p>IntXeger (pronounced “integer”) is a Python library for generating strings from regular
-expressions. It was inspired by the <a class="reference external" href="https://github.com/crdoconnor/xeger">xeger</a> library but
-provides additional features such as:</p>
+expressions. Some of its core features include:</p>
 <ul class="simple">
-<li><p>Faster than both <a class="reference external" href="https://github.com/crdoconnor/xeger">xeger</a> and <a class="reference external" href="https://github.com/asciimoo/exrex">exrex</a>.</p></li>
-<li><p>Array-like indexing for mapping integers to strings which match the regex.</p></li>
-<li><p>Sampling-without-replacement for generating a set of unique strings which match the regex.</p></li>
+<li><p>Support for most common regular expression operations.</p></li>
+<li><p>Array-like indexing for mapping integers to matching strings.</p></li>
+<li><p>Generator interface for sequentially sampling matching strings.</p></li>
+<li><p>Sampling-without-replacement for generating a set of unique strings.</p></li>
 </ul>
-<p>These features make <code class="docutils literal notranslate"><span class="pre">IntXeger</span></code> perfect for applications such as generating unique
-identifiers, producing matching strings sequentially, and more!</p>
+<p>Compared to popular alternatives such as <a class="reference external" href="https://github.com/crdoconnor/xeger">xeger</a> and
+<a class="reference external" href="https://github.com/asciimoo/exrex">exrex</a>, <code class="docutils literal notranslate"><span class="pre">IntXeger</span></code> is an order of magnitude faster at
+generating strings and offers unique functionality such as array-like indexing and
+sampling-without-replacement.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>You can install the latest stable release of IntXeger by running:</p>
@@ -216,8 +224,8 @@ that only contains lowercase letters.</p>
 <span class="n">x</span> <span class="o">=</span> <span class="n">intxeger</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;[a-z]</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can check the number of strings that can be generated with this string using
-the <code class="docutils literal notranslate"><span class="pre">length</span></code> attribute and generate the <code class="docutils literal notranslate"><span class="pre">i</span></code>th string which matches using the <code class="docutils literal notranslate"><span class="pre">get(i)</span></code>
+<p>You can check the number of strings that can be generated from this regex using
+the <code class="docutils literal notranslate"><span class="pre">length</span></code> attribute and generate the <code class="docutils literal notranslate"><span class="pre">i</span></code>th matching string using the <code class="docutils literal notranslate"><span class="pre">get(i)</span></code>
 method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">26</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># there are 676 unique strings which match this regex</span>
 <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ap&#39;</span> <span class="c1"># the 15th unique string is &#39;ap&#39;</span>

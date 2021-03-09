@@ -98,17 +98,23 @@
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html">intxeger package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html">intxeger.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intxeger.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intxeger.core.html">intxeger.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.base">intxeger.core.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.choice">intxeger.core.choice module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.concatenate">intxeger.core.concatenate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.constant">intxeger.core.constant module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.group">intxeger.core.group module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../intxeger.core.html#module-intxeger.core.repeat">intxeger.core.repeat module</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#module-intxeger.intxeger">intxeger.intxeger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intxeger.html#module-intxeger.optimize">intxeger.optimize module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
@@ -182,18 +188,40 @@
            <div itemprop="articleBody">
             
   <h1>Source code for intxeger.optimize</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">GroupRef</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
+<span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="kn">from</span> <span class="nn">intxeger.core</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">GroupRef</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Repeat</span>
 
 
 <div class="viewcode-block" id="optimize"><a class="viewcode-back" href="../../intxeger.html#intxeger.optimize.optimize">[docs]</a><span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Traverse the tree return an optimized copy.</span>
+
+<span class="sd">    This traverses the tree and applies transforms which are designed to</span>
+<span class="sd">    improve the sampling speed. Examples of transforms include removing</span>
+<span class="sd">    unnecessary operations, flattening small nodes, and more.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node: The root node.</span>
+<span class="sd">        level: The optimization level (higher = more optimization loops).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The root node of the optimized tree.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">original_node</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="c1"># Apply the optimizations</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
         <span class="n">new_node</span> <span class="o">=</span> <span class="n">_optimize</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_node</span><span class="p">):</span>
             <span class="k">break</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">new_node</span>
+
+    <span class="c1"># Test the optimized node</span>
     <span class="k">assert</span> <span class="n">node</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="n">original_node</span><span class="o">.</span><span class="n">length</span>
-    <span class="k">assert</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">original_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">original_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">node</span></div>
 
 
@@ -201,7 +229,7 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Group</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">_optimize</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">node</span><span class="p">),</span> <span class="n">node</span><span class="o">.</span><span class="n">ref_id</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Choice</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Choice</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="n">_optimize</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -218,7 +246,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Repeat</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">node</span>
 
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;</span> <span class="mi">1024</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">:</span>
         <span class="n">is_flat</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Constant</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
             <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Choice</span><span class="p">)</span>
             <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">Constant</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
