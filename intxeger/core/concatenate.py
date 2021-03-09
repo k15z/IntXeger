@@ -11,12 +11,15 @@ class Concatenate(Node):
             self.length *= choice.length
 
     def get(self, idx: int) -> str:
-        values = []
+        sub_indices = []
         for choice in reversed(self.nodes):
             sub_idx = idx % choice.length
             idx = idx // choice.length
+            sub_indices.append(sub_idx)
+        values = []
+        for choice, sub_idx in zip(self.nodes, reversed(sub_indices)):
             values.append(choice.get(sub_idx))
-        return "".join(reversed(values))
+        return "".join(values)
 
     def __str__(self):
         return (

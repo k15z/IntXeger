@@ -1,4 +1,4 @@
-from intxeger.core import Choice, Concatenate, Constant, Node, Repeat
+from intxeger.core import Choice, Concatenate, Constant, Node, Repeat, Group, GroupRef
 
 
 def optimize(node: Node, level=10):
@@ -14,6 +14,9 @@ def optimize(node: Node, level=10):
 
 
 def _optimize(node: Node):
+    if isinstance(node, Group):
+        node = Group(_optimize(node.node), node.ref_id)
+
     if isinstance(node, Choice):
         node = Choice([_optimize(c) for c in node.choices])
         if len(node.choices) == 1:
@@ -36,6 +39,7 @@ def _optimize(node: Node):
             isinstance(node, Choice)
             and all(isinstance(c, Constant) for c in node.choices)
         )
-        if not is_flat:
+        skip = isinstance(node, Group) or isinstance(node, GroupRef)
+        if not is_flat and not skip:
             node = Choice([Constant(node.get(i)) for i in range(node.length)])
     return node
