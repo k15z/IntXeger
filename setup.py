@@ -66,6 +66,11 @@ setup(
     keywords="intxeger",
     name="intxeger",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
+    entry_points={
+        'console_scripts': [
+            'intxeger=intxeger.__main__:main',
+        ],
+    },
     python_requires=">=3.6",
     test_suite="intxeger/tests",
     tests_require=test_requirements,

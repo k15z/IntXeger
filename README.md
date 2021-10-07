@@ -61,6 +61,24 @@ print(x.sample(N=2))
 # ['11:57:12 AM', '01:16:01 AM']
 ```
 
+You can also print matches on the command line.
+
+```console
+$ intxeger --order=desc "[a-c]"
+c
+b
+a
+$ python3 -m intxeger -0 'base/[ab]/[12]' | xargs -0 mkdir -p
+$ tree base/
+base
+├── a
+│   ├── 1
+│   └── 2
+└── b
+    ├── 1
+    └── 2
+```
+
 To learn more about the functionality provided by `IntXeger`, check out our 
 [documentation](https://k15z.github.io/IntXeger)!
 
