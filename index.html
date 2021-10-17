@@ -152,6 +152,22 @@ method.</p>
 <span class="c1"># [&#39;11:57:12 AM&#39;, &#39;01:16:01 AM&#39;]</span>
 </pre></div>
 </div>
+<p>You can also print matches on the command line.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>intxeger --order<span class="o">=</span>desc <span class="s2">&quot;[a-c]&quot;</span>
+<span class="go">c</span>
+<span class="go">b</span>
+<span class="go">a</span>
+<span class="gp">$ </span>python3 -m intxeger -0 <span class="s1">&#39;base/[ab]/[12]&#39;</span> <span class="p">|</span> xargs -0 mkdir -p
+<span class="gp">$ </span>tree base/
+<span class="go">base</span>
+<span class="go">├── a</span>
+<span class="go">│   ├── 1</span>
+<span class="go">│   └── 2</span>
+<span class="go">└── b</span>
+<span class="go">    ├── 1</span>
+<span class="go">    └── 2</span>
+</pre></div>
+</div>
 <p>To learn more about the functionality provided by <code class="docutils literal notranslate"><span class="pre">IntXeger</span></code>, check out our
 <a class="reference external" href="https://k15z.github.io/IntXeger">documentation</a>!</p>
 </section>
