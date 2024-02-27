@@ -3,8 +3,12 @@
 import sre_parse
 import string
 
-from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, Repeat
+from intxeger.core import Choice, Concatenate, Constant, Group, GroupRef, Node, Repeat, CharacterClassChoice
 from intxeger.optimize import optimize
+
+
+ILLEGAL_WHITE_SPACE_CHARACTERS = ["\n", "\r", "\t", "\v", "\f"]
+
 
 CATEGORY_MAP = {
     sre_parse.CATEGORY_SPACE: " \t\n\r\x0b\x0c",
@@ -24,7 +28,8 @@ def _to_node(op, args, max_repeat):
         if nodes[0] == "NEGATE":
             values = [c[i] for c in nodes[1:] for i in range(c.length)]
             nodes = [Constant(c) for c in string.printable if c not in values]
-        return Choice(nodes)
+        node = Choice(nodes)
+        return CharacterClassChoice(node=node)
     elif op == sre_parse.RANGE:
         min_value, max_value = args
         return Choice(
@@ -37,7 +42,7 @@ def _to_node(op, args, max_repeat):
     elif op == sre_parse.CATEGORY:
         return Choice([Constant(c) for c in CATEGORY_MAP[args]])
     elif op == sre_parse.ANY:
-        return Choice([Constant(c) for c in string.printable])
+        return Choice([Constant(c) for c in string.printable if c not in ILLEGAL_WHITE_SPACE_CHARACTERS])
     elif op == sre_parse.ASSERT:
         nodes = []
         for op, args in args[1]:
